@@ -11,7 +11,7 @@ apt-get upgrade
 make-cadir ${CA_DIR}
 #aws s3 cp s3://jiedong/Private/OpenVPN_config/vars ${CA_DIR}/vars
 mv ./vars ${CA_DIR}/
-mv ./server.conf /etc/openvpn/server.conf
+mv ./server.conf /etc/openvpn/
 
 cd ${CA_DIR}
 source vars
