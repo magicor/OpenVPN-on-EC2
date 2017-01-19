@@ -9,7 +9,9 @@ apt-get update
 apt-get upgrade
 
 make-cadir ${CA_DIR}
-aws s3 cp s3://jiedong/Private/OpenVPN_config/vars ${CA_DIR}/vars
+#aws s3 cp s3://jiedong/Private/OpenVPN_config/vars ${CA_DIR}/vars
+mv ./vars ${CA_DIR}/
+mv ./server.conf /etc/openvpn/server.conf
 
 cd ${CA_DIR}
 source vars
@@ -25,7 +27,7 @@ cd  ${CA_DIR}/keys
 sudo cp ca.crt ca.key server.crt server.key ta.key dh2048.pem /etc/openvpn
 #gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf
 
-aws s3 cp s3://jiedong/Private/OpenVPN_config/server.conf /etc/openvpn/server.conf
+#aws s3 cp s3://jiedong/Private/OpenVPN_config/server.conf /etc/openvpn/server.conf
 #echo -e "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/g' /etc/sysctl.conf
 sysctl -p
