@@ -9,7 +9,8 @@ CA_DIR=~/openvpn-ca
 
 name=${1}
 
-aws s3 cp s3://jiedong/Private/OpenVPN_config/base.conf ${BASE_CONFIG}
+#aws s3 cp s3://jiedong/Private/OpenVPN_config/base.conf ${BASE_CONFIG}
+cp ./base.conf $<CLIENT_CONFIG_DIR>/
 
 cd ${CA_DIR}
 source vars
@@ -29,5 +30,5 @@ cat ${BASE_CONFIG} \
 
 echo 'remote '${PublicIP}' 1194' >> ${OUTPUT_DIR}/${name}.ovpn
 
-aws s3 cp  ${OUTPUT_DIR}/${name}.ovpn s3://jiedong/Private/OpenVPN_config/Client_config/${name}.ovpn
-rm ${BASE_CONFIG}
+#aws s3 cp  ${OUTPUT_DIR}/${name}.ovpn s3://jiedong/Private/OpenVPN_config/Client_config/${name}.ovpn
+#rm ${BASE_CONFIG}
